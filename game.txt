@@ -1,0 +1,67 @@
+import java.util.Scanner;
+class GuessGame {
+		Player p1;
+		Player p2;
+		Player p3;
+		public void startGame() {
+		  p1 = new Player() ;
+		  p2 = new Player() ;
+		  p3 = new Player() ;
+		  int guessp1 = 0;
+		  int guessp2 = 0;
+		  int guessp3 = 0;
+		  boolean p1isRight = false;
+		  boolean p2isRight = false;
+		  boolean p3isRight = false;
+		  Scanner n1 = new Scanner(System.in);//初始化变量建立对象
+		  
+		  while (true) {
+			  System.out.print("Number to guess is "  );
+			  int targetNumber = n1.nextInt();
+			  p1.guess();
+			  p2.guess();
+			  p3.guess();
+			  guessp1 = p1.number;
+			  System.out.println("p1 guessed " + guessp1);
+			  guessp2 = p2.number;
+			  System.out.println("p2 guessed " + guessp2);
+			  guessp3 = p3.number;
+			  System.out.println("p3 guessed " + guessp3);
+			  if (guessp1 == targetNumber) {
+				  p1isRight = true;
+			  }
+			  if (guessp2 == targetNumber) {
+				  p2isRight = true;
+			  }
+			  if (guessp3 == targetNumber) {
+				  p3isRight = true;
+			  }
+			  if (p1isRight|| p2isRight|| p3isRight) {
+				  System.out.println("we have a winner!");
+				  System.out.println("p1 " + p1isRight);
+				  System.out.println("p2 " + p2isRight);
+				  System.out.println("p3 " + p3isRight);
+				  System.out.println("Game is over.");
+				  break;
+			  }else {
+				  System.out.println("try again.");
+			  }
+			  
+		  }
+		  
+		}
+}
+class Player {
+		int number = 0;
+		  public void guess() {
+	      number = (int) (Math.random()*10);
+	      System.out.println("Im guessing "+number);
+		  }
+}
+
+public class GameLauncher {
+	public static void main(String[] args) {
+		GuessGame game = new GuessGame() ;
+        game.startGame();
+    }
+}
